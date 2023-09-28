@@ -9,13 +9,14 @@
   </div>
 
   <div class="panel panel-default products">
+
     <table class="table table-bordered">
       <thead>
         <tr>
           <th>Category</th>
         </tr>
       </thead>
-      <%= @categories.each do |category| %>
+      <% @categories.each do |category| %>
         <tbody>
           <td>
             <%= category.name %>

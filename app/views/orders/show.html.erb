@@ -1,13 +1,15 @@
 <section class="orders-show">
 
   <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
+    <h1>Order #<%= @order.id %>
+    </h1>
   </header>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order <%= @order.email %></h4>
-    </div>
-    <div class="panel panel-default items">
+    <h4>Thank you for your order <%= @order.email %>
+    </h4>
+  </div>
+  <div class="panel panel-default items">
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -20,26 +22,36 @@
       </thead>
       <% @order.line_items.each do |item| %>
         <tbody>
-          <td><%= image_tag item.product.image.thumb.url, alt: item.product.name %></td>
-          <td><%= item.product.name %></td>
-          <td><%= item.product.description %></td>
-          <td><%= item.quantity %></td>
-          <td><%= humanized_money_with_symbol (item.total_price_cents / 100.0) %></td>
-          </tbody>
+          <td>
+            <%= image_tag item.product.image.thumb.url, alt: item.product.name %>
+          </td>
+          <td>
+            <%= item.product.name %>
+          </td>
+          <td>
+            <%= item.product.description %>
+          </td>
+          <td>
+            <%= item.quantity %>
+          </td>
+          <td>
+            <%= humanized_money_with_symbol (item.total_price_cents / 100.0) %>
+          </td>
+        </tbody>
         <% end %>
-      <tfoot>
-        <tr>
-          <th colspan="4">
-            TOTAL:
-          </th>
-          <th>
-            <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
-          </th>
-        </tr>
-      </tfoot>
+          <tfoot>
+            <tr>
+              <th colspan="4">
+                TOTAL:
+              </th>
+              <th>
+                <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
+              </th>
+            </tr>
+          </tfoot>
     </table>
   </div>
 
-  <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+  <%= link_to "Continue Shopping" , root_path, class: 'btn btn-lg btn-primary' %>
 
 </section>
